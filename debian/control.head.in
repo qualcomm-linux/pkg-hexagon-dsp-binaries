@@ -1,0 +1,11 @@
+Source: hexagon-dsp-binaries
+Section: non-free-firmware/libs
+Priority: optional
+Maintainer: Dmitry Baryshkov <dbaryshkov@gmail.com>
+Rules-Requires-Root: no
+Build-Depends:
+ debhelper-compat (= 13),
+Standards-Version: 4.7.2
+Homepage: https://github.com/linux-msm/hexagon-dsp-binaries/
+Vcs-Browser: https://salsa.debian.org/lumag/hexagon-dsp-binaries
+Vcs-Git: https://salsa.debian.org/lumag/hexagon-dsp-binaries.git

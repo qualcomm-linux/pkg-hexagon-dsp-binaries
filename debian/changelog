@@ -1,0 +1,5 @@
+hexagon-dsp-binaries (0~20250808-1) UNRELEASED; urgency=medium
+
+  * Initial release. (Closes: #1101838)
+
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Mon, 18 Aug 2025 14:58:18 +0300

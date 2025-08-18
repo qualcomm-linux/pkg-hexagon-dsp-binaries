@@ -1,0 +1,6 @@
+# See https://wiki.debian.org/UpstreamMetadata for more info/fields.
+
+Bug-Database: https://github.com/linux-msm/hexagon-dsp-binaries/issues
+Bug-Submit: https://github.com/linux-msm/hexagon-dsp-binaries/issues/new
+Repository-Browse: https://github.com/linux-msm/hexagon-dsp-binaries
+Repository: https://github.com/linux-msm/hexagon-dsp-binaries.git

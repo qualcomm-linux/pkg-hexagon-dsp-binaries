@@ -1,0 +1,17 @@
+hexagon-dsp-binaries
+====================
+
+These packages provide binaries (FastRPC shell, C++ runtime, compressed audio
+decoder modules and other libs) for several Qualcomm platforms.
+
+The libraries are installed in subdirectories under /usr/share/qcom as agreed
+with the hexagonrpc ([1]) and fastrpc ([2]) projects, one subdir per device (or
+type of devices).
+
+These libraries are loaded at runtime from userspace by the corresponding DSP
+daemon or by the user app which wants to use FastRPC functionality.
+
+[1] https://github.com/linux-msm/hexagonrpc
+[2] https://github.com/qualcomm/fastrpc
+
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>, Mon, 18 Aug 2025 17:09:46 +0200

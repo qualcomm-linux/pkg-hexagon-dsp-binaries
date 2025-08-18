@@ -1,0 +1,6 @@
+# Per reviewers request, drop map files for now
+usr/share/hexagon-dsp/*/*/*/dsp/*/map_*.txt
+# Licences are already being provided via debian/copyright
+usr/share/hexagon-dsp/*/*/*/dsp/*/LICENSE*
+# to be removed in the next version
+usr/share/hexagon-dsp/qcs8300/Qualcomm/QCS8300-RIDE/dsp/gdsp0/gpdspr.jsn

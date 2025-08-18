@@ -1,0 +1,23 @@
+hexagon-dsp-binaries
+====================
+
+hexagon-dsp-binaries is based on the upstream repo from the linux-msm project.
+The project provides (semi-)monthly tagged releases and tarballs in the form of
+YYYYMMDD.
+
+Original files are not included into the Debian packaging repo. In order to
+prepare for building the package:
+0. Optionally run `dch -v 0~YYYYMMDD-1` in order to update to the new version,
+1. run `uscan --download-current-version`,
+2. run `debian/rules orig` in order to unpack the orig file into build tree,
+3. run `debian/rules debian/control`.
+
+Licences
+--------
+
+Upstream tracks all licensing information in the WHENCE file. Currently all
+binary files are covered by one of the two licences which allow redistribution
+of the files. Qualcomm DSP firmware in the linux-firmware repository is
+covered by the same licence files.
+
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>, Mon, 18 Aug 2025 17:09:46 +0200

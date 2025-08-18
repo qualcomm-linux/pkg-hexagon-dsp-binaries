@@ -1,0 +1,11 @@
+Package: #PKGNAME#
+Architecture: all
+Depends:
+ ${misc:Depends}, firmware-qcom-soc (>> #VERSION#), firmware-qcom-soc (<< #VERSION#.0)
+Description: Hexagon DSP binaries and libraries for #DEVNAME#
+ While linux-firmware contains firmware for the DSPs present on the devices
+ using Qualcomm SoCs, using the FastRPC interfaces, compressed audio support
+ or getting the sensors data on those devices requires additional set of
+ binaries to be executed on the DSP side.
+ .
+ This package provides binaries for #DEVNAME# device.

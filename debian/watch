@@ -1,0 +1,6 @@
+# Compulsory line, this is a version 4 file.
+version=4
+
+opts="searchmode=plain, dversionmangle=s/^0~//, oversionmangle=s/^/0~/" \
+    https://api.github.com/repos/linux-msm/hexagon-dsp-binaries/releases?per_page=4 \
+    https://github.com/linux-msm/hexagon-dsp-binaries/releases/download/@ANY_VERSION@/@PACKAGE@_[0-9]*.tar.gz

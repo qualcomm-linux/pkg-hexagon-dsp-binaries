@@ -1,0 +1,17 @@
+/*.substvars
+/.debhelper/
+/debhelper-build-stamp
+/build/
+/files
+/tmp/
+/hexagon-dsp-binaries/
+/hexagon-dsp-binaries-*/
+/hexagon-dsp-binaries.debhelper.log
+/hexagon-dsp-binaries-*.debhelper.log
+
+# Generated via debian/rules debian/control
+/control
+/control.md5sum
+/control.tmp*
+/*.install
+/hexagon-dsp-binaries-*.lintian-overrides

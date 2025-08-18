@@ -1,0 +1,16 @@
+Package: hexagon-dsp-binaries
+Architecture: all
+Depends:
+ ${misc:Depends}, #PACKAGES#
+Description: Hexagon DSP binaries and libraries
+ While linux-firmware contains firmware for the DSPs present on the devices
+ using Qualcomm SoCs, using the FastRPC interfaces, compressed audio support
+ or getting the sensors data on those devices requires additional set of
+ binaries to be executed on the DSP side.
+ .
+ These binaries include fastrpc_shell_N (where N is 0, 1, 2, 3),
+ fastrpc_shell_unsigned_N (N = 3, special version of shell for CDSP only),
+ libraries implementing necessary hooks, etc.
+ .
+ This is an empty package which depends on all actual Hexagon DSP binary
+ packages.
