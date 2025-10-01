@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Source: https://github.com/linux-msm/hexagon-dsp-binaries.git
-Disclaimer: the package contians binaries which are provided by hardware
+Disclaimer: the package contains binaries which are provided by hardware
  vendors under a license, which allows redistribution, but is not
  DFSG-compliant. As such these binaries can not be a part of the Debian
  archive, but can be a part of the non-free-firmware.
