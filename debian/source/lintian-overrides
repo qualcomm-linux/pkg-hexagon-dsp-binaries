@@ -1,3 +1,4 @@
 # Well duh that's why this is non-free-firmware
+hexagon-dsp-binaries source: source-contains-prebuilt-binary *
 hexagon-dsp-binaries source: source-is-missing *
 hexagon-dsp-binaries: elf-warning *
