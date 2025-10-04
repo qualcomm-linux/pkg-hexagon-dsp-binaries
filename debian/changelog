@@ -1,5 +1,7 @@
-hexagon-dsp-binaries (0~20250808-1) UNRELEASED; urgency=medium
+hexagon-dsp-binaries (0~20250808-1) experimental; urgency=medium
 
   * Initial release. (Closes: #1101838)
+  * Upload to experimental as a way to let firmware-nonfree maintainers to
+    react and to discuss further points.
 
  -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Mon, 18 Aug 2025 14:58:18 +0300
