@@ -28,6 +28,8 @@ do_install() {
 
 		echo "# Automatically generated file, modify debian/regen.sh or debian/pkgname.lintian-overrides.in instead" > debian/${pkgname}.lintian-overrides
 		sed -e "s!#PKGNAME#!${pkgname}!g" debian/pkgname.lintian-overrides.in >> debian/${pkgname}.lintian-overrides
+
+		echo "WHENCE" >> debian/${pkgname}.docs
 	fi
 }
 
