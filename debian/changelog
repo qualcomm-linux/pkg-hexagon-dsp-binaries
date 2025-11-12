@@ -1,4 +1,4 @@
-hexagon-dsp-binaries (0~20251011-1) UNRELEASED; urgency=medium
+hexagon-dsp-binaries (0~20251011-1) experimental; urgency=medium
 
   * New upstream release.
   * Include linux-firmware excerpts as a separate component. Licence for
@@ -8,8 +8,10 @@ hexagon-dsp-binaries (0~20251011-1) UNRELEASED; urgency=medium
   * Package Qualcomm Hexagon firmware into a separate package per agreement
     with the kernel team. Relevant parts will be dropped from firmware-nonfree
     at some point in future.
+  * Still upload to experimental, pending firmware-nonfree maintainers
+    blessing.
 
- -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Wed, 12 Nov 2025 21:10:07 +0200
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Tue, 09 Dec 2025 18:59:50 +0200
 
 hexagon-dsp-binaries (0~20250917-1) experimental; urgency=medium
 
