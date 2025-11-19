@@ -1,0 +1,191 @@
+#!/usr/bin/python3
+
+"""check-symlinks: check for likely classes of errors in generated symlinks
+
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: MIT
+
+Author: Robie Basak <robie.basak@oss.qualcomm.com>
+
+For every binary package in debian/control, this script inspects
+debian/<package>/.
+
+Two packages must not ship files with the same path, or one package a file and
+another a directory with the same path.
+
+Every symlink must be relative. If it resolves, it must resolve to somewhere
+inside debian/<package>. If it does not resolve, the target must nevertheless
+be found in debian/<other-package>/. In the latter case <package> must depend
+on <other-package>.
+
+If any must directive above is found to be violated then this script exits with
+a non-zero status. Otherwise it returns a zero status.
+
+To avoid this becoming too complex, I haven't covered the general case for all
+packaging, just what is done in this package that I think is more likely to
+break and that I would like to verify prior to sponsorship. Correct handling of
+absolute symlinks, Conflicts cases and finding upgrade path problems are not
+implemented.
+
+Run immediately after dh_install, for example via override_dh_install.
+"""
+
+import itertools
+import os
+import stat
+import sys
+
+import debian.deb822
+
+
+class CheckError(RuntimeError):
+    """Exception raised when symlink validation checks fail.
+
+    Raised to indicate errors in symlink configuration, such as missing
+    targets, incorrect dependencies, or unsupported symlink types (eg. absolute
+    symlinks).
+    """
+
+    pass
+
+
+def check_symlink(
+    paths: dict[str, str],
+    dependencies: dict[str, set[str]],
+    source_package: str,
+    source_path: str,
+    target_path: str,
+) -> None:
+    """Check that a symlink is valid and properly declared in dependencies.
+
+    Validates that a symlink target exists and that the source package properly
+    depends on the target package if they differ.
+
+    :param paths: mapping of relative file/directory paths to the package
+        names that provide them. Directory paths end with "/".
+    :param dependencies: mapping of package names to sets of package names
+        they depend on, as declared in debian/control.
+    :param source_package: name of the binary package containing the symlink.
+    :param source_path: full path to the symlink file being checked.
+    :param target_path: the target path that the symlink points to (as read
+        from the symlink itself).
+    :raises CheckError: if the symlink is absolute (not implemented), if the
+        target path cannot be resolved to any package, or if the source package
+        does not declare a dependency on the target package.
+    """
+    if target_path.startswith("/"):
+        raise CheckError(
+            f"Absolute symlink checking not implemented: {source_path}"
+        )
+    rel_target_path = os.path.relpath(
+        os.path.normpath(
+            os.path.join(os.path.dirname(source_path), target_path)
+        ),
+        f"debian/{source_package}",
+    )
+    # We don't care whether it points to a file or a directory; either is fine
+    target_package = paths.get(rel_target_path) or paths.get(
+        rel_target_path + "/"
+    )
+    if target_package is None:
+        raise CheckError(
+            f"{source_path} symlink target {target_path} not found"
+        )
+    if (
+        source_package != target_package
+        and target_package not in dependencies[package]
+    ):
+        raise CheckError(
+            f"{source_path} symlink target {target_path} resolved through package {target_package} but no Depends found"
+        )
+
+
+def stop_if_errored(errors):
+    if errors:
+        print(*errors, sep="\n")
+        sys.exit(1)
+
+
+with open("debian/control") as control_file:
+    binary_packages = list(
+        list(debian.deb822.Packages.iter_paragraphs(control_file))[1:]
+    )
+
+# package_name -> set({package_name}) to reflects Depends line
+dependencies = {
+    p["package"]: {
+        d[0]["name"]
+        for d in p.relations["depends"]
+        if not d[0]["name"].startswith("$")
+    }
+    for p in binary_packages
+}
+
+binary_package_names = list(dependencies.keys())
+errors = []  # list of strings detailing errors found, one string per error
+paths = {}  # as accepted by check_symlink()
+
+for package in binary_package_names:
+    package_root = f"debian/{package}"
+    for dirpath, dirnames, filenames in os.walk(f"debian/{package}"):
+        package_paths = set(
+            itertools.chain(
+                [
+                    os.path.relpath(os.path.join(dirpath, path), package_root)
+                    for path in filenames
+                ],
+                [
+                    os.path.relpath(os.path.join(dirpath, path), package_root)
+                    + "/"
+                    for path in dirnames
+                ],
+            )
+        )
+        for path in package_paths.intersection(paths.keys()):
+            if path.endswith("/"):
+                # Two packages providing the same directory is fine
+                continue
+            errors.append(
+                f"File provided by {paths[path]} but also {package}: {path}"
+            )
+        file_dir_collisions = [
+            path
+            for path in package_paths
+            if path.endswith("/") and path.rstrip("/") in paths
+        ]
+        for path in file_dir_collisions:
+            file_path = path.rstrip("/")
+            errors.append(
+                f"File provided by {paths[file_path]} but is also a directory shipped by {package}: {file_path}"
+            )
+        dir_file_collisions = [
+            path
+            for path in package_paths
+            if not path.endswith("/") and f"{path}/" in paths
+        ]
+        for path in dir_file_collisions:
+            errors.append(
+                f"File provided by {package} but is also a directory shipped by {paths[f'{path}/']}: {path}"
+            )
+        paths.update({path: package for path in package_paths})
+
+
+stop_if_errored(errors)
+
+for package in binary_package_names:
+    for dirpath, dirnames, filenames in os.walk(f"debian/{package}"):
+        for filename in filenames:
+            source_path = os.path.join(dirpath, filename)
+            if stat.S_ISLNK(os.lstat(source_path).st_mode):
+                try:
+                    check_symlink(
+                        paths=paths,
+                        dependencies=dependencies,
+                        source_package=package,
+                        source_path=source_path,
+                        target_path=os.readlink(source_path),
+                    )
+                except CheckError as e:
+                    errors.append(str(e))
+
+stop_if_errored(errors)

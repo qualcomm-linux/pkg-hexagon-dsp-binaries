@@ -24,6 +24,10 @@ override_dh_auto_test:
 override_dh_auto_install:
 	$(MAKE) install DESTDIR=debian/tmp DSPDIR=usr/share/hexagon-dsp
 
+override_dh_install:
+	dh_install
+	debian/check-symlinks
+
 REGEN = debian/regen.sh
 CONTROLTEMPLATES = debian/control.head.in debian/control.dev.in debian/control.main.in debian/pkgname.lintian-overrides.in
 
