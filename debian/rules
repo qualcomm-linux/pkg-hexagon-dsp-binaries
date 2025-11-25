@@ -40,17 +40,30 @@ DIR_ORIG = ../orig/$(DEB_SOURCE)-$(VERSION_UPSTREAM)
 TAR_ORIG_NAME = $(DEB_SOURCE)_$(VERSION_BASE).orig.tar.gz
 TAR_ORIG = $(firstword $(wildcard ../$(TAR_ORIG_NAME)) $(wildcard ../orig/$(TAR_ORIG_NAME)))
 
+DIR_FW_ORIG = ../orig/$(DEB_SOURCE)-firmware-$(VERSION_UPSTREAM)
+TAR_FW_ORIG_NAME = $(DEB_SOURCE)_$(VERSION_BASE).orig-firmware.tar.gz
+TAR_FW_ORIG = $(firstword $(wildcard ../$(TAR_FW_ORIG_NAME)) $(wildcard ../orig/$(TAR_FW_ORIG_NAME)))
+
 $(DIR_ORIG):
 ifeq ($(TAR_ORIG),)
         $(error Cannot find orig tarball $(TAR_ORIG_NAME))
 else
-	mkdir -p ../orig
-	tar -C ../orig -xaf $(TAR_ORIG)
+	mkdir -p $(DIR_ORIG)
+	tar -C $(DIR_ORIG) --strip-components=1 -xaf $(TAR_ORIG)
 endif
 
-orig: $(DIR_ORIG)
+$(DIR_FW_ORIG):
+ifeq ($(TAR_FW_ORIG),)
+        $(error Cannot find orig tarball $(TAR_FW_ORIG_NAME))
+else
+	mkdir -p $(DIR_FW_ORIG)
+	tar -C $(DIR_FW_ORIG) --strip-components=1 -xaf $(TAR_FW_ORIG)
+endif
+
+orig: $(DIR_ORIG) $(DIR_FW_ORIG)
 	rsync --delete --exclude /debian --exclude /.git --link-dest=$(DIR_ORIG)/ -a $(DIR_ORIG)/ .
 #	QUILT_PATCHES='$(CURDIR)/debian/patches' QUILT_PC=.pc quilt push --quiltrc - -a -q --fuzz=0
+	rsync --delete --exclude /debian --exclude /.git --link-dest=../$(DIR_FW_ORIG)/ -a $(DIR_FW_ORIG)/ firmware/
 
 # debian/regen.sh uses debian/changelog as input, but the
 # output only depends on the source name and version.  To avoid

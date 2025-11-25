@@ -13,7 +13,8 @@
 /control
 /control.md5sum
 /control.tmp*
-/*.install
+/hexagon-dsp-binaries.lintian-overrides
+/hexagon-dsp-binaries-*.install
 /hexagon-dsp-binaries-*.lintian-overrides
 /hexagon-dsp-binaries-*.docs
 /hexagon-dsp-binaries-*.tmp*

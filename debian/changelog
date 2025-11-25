@@ -1,6 +1,10 @@
 hexagon-dsp-binaries (0~20251011-1) UNRELEASED; urgency=medium
 
   * New upstream release.
+  * Include linux-firmware excerpts as a separate component. Licence for
+    Makefile is based on the upstream commit. There is no licence for the
+    firmware/WHENCE file per upstream maintainers (nor is it possible to
+    establish one).
 
  -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Wed, 12 Nov 2025 21:10:07 +0200
 

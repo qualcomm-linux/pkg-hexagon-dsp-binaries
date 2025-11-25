@@ -5,3 +5,17 @@ hexagon-dsp-binaries: elf-warning *
 
 # We don't have a way to describe license texts themselves (bug #1111126)
 hexagon-dsp-binaries source: file-without-copyright-information LICENSE.* [debian/copyright]
+hexagon-dsp-binaries source: file-without-copyright-information firmware/LICENSE.* [debian/copyright]
+hexagon-dsp-binaries source: file-without-copyright-information firmware/qcom/NOTICE.txt [debian/copyright]
+
+# Quoting linux-firmware maintiners:
+# David added it with the initial commit in 2008 with no license
+# statement.  It has since been modified over 2800 times by hundreds of people.
+# Given the current situation, it's not clear what the original license is nor
+# if we can even prescribe one today given the number of changes by so many
+# authors. [...] it's questionable whether each contribution is copyrightable
+# here.
+hexagon-dsp-binaries source: file-without-copyright-information firmware/WHENCE [debian/copyright]
+
+# no signature for the rebuilt archive
+hexagon-dsp-binaries source: orig-tarball-missing-upstream-signature hexagon-dsp-binaries_*.orig-firmware.tar.gz

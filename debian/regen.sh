@@ -1,5 +1,12 @@
 #!/bin/sh -e
 
+do_lintian_override() {
+	pkgname="$1"
+
+	echo "# Automatically generated file, modify debian/regen.sh or debian/pkgname.lintian-overrides.in instead" > debian/${pkgname}.lintian-overrides
+	sed -e "s!#PKGNAME#!${pkgname}!g" debian/all.lintian-overrides.in >> debian/${pkgname}.lintian-overrides
+}
+
 add_package() {
 	pkgname="$1"
 
@@ -28,6 +35,8 @@ add_package() {
 
 		echo "WHENCE" > debian/${pkgname}.docs
 		touch debian/${pkgname}.tmp-deps
+
+		do_lintian_override ${pkgname}
 	fi
 }
 
@@ -50,8 +59,7 @@ do_install() {
 	pkgname=$(echo $target | skip_soc | to_pkgname)
 	add_package ${pkgname}
 
-	if [ ! -e debian/${pkgname}.lintian-overrides ] ; then
-		echo "# Automatically generated file, modify debian/regen.sh or debian/pkgname.lintian-overrides.in instead" > debian/${pkgname}.lintian-overrides
+	if ! grep -q unstripped debian/${pkgname}.lintian-overrides ; then
 		sed -e "s!#PKGNAME#!${pkgname}!g" debian/pkgname.lintian-overrides.in >> debian/${pkgname}.lintian-overrides
 	fi
 
@@ -71,6 +79,7 @@ do_link() {
 	echo "usr/share/hexagon-dsp/${target}" >> debian/${pkgname}.install
 }
 
+rm -f debian/hexagon-dsp-binaries.lintian-overrides
 rm -f debian/hexagon-dsp-binaries-*.docs
 rm -f debian/hexagon-dsp-binaries-*.install
 rm -f debian/hexagon-dsp-binaries-*.lintian-overrides
@@ -81,6 +90,8 @@ PACKAGES=""
 VERSION="$1"
 
 cat debian/control.head.in > debian/control.tmp
+
+do_lintian_override hexagon-dsp-binaries
 
 touch debian/control.tmp2
 while read verb target rest
