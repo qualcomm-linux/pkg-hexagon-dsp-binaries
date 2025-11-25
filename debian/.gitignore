@@ -9,6 +9,9 @@
 /hexagon-dsp-binaries.debhelper.log
 /hexagon-dsp-binaries-*.debhelper.log
 
+/firmware-qcom-dsp/
+/firmware-qcom-dsp.debhelper.log
+
 # Generated via debian/rules debian/control
 /control
 /control.md5sum

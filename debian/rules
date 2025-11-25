@@ -23,10 +23,20 @@ override_dh_auto_test:
 # Override the target location
 override_dh_auto_install:
 	$(MAKE) install DESTDIR=debian/tmp DSPDIR=usr/share/hexagon-dsp
+	[ -e firmware/WHENCE-orig ] || mv firmware/WHENCE firmware/WHENCE-orig
+	debian/filter-firmware-whence.py firmware/WHENCE-orig firmware/WHENCE
+	cd firmware && ./copy-firmware.sh ../debian/tmp/usr/lib/firmware
+	./firmware/dedup-firmware.sh debian/tmp/usr/lib/firmware/
 
 override_dh_install:
 	dh_install
 	debian/check-symlinks
+
+override_dh_clean:
+	dh_clean
+	if [ -e firmware/WHENCE-orig ] ; then mv firmware/WHENCE-orig firmware/WHENCE ; fi
+	# possible leftover of dedup-firmware.sh
+	rm -f results.txt
 
 REGEN = debian/regen.sh
 CONTROLTEMPLATES = debian/control.head.in debian/control.dev.in debian/control.main.in debian/pkgname.lintian-overrides.in

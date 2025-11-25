@@ -1,0 +1,9 @@
+# Hexagon DSP firmware files are quite different from our expectations
+firmware-qcom-dsp: statically-linked-binary [*]
+firmware-qcom-dsp: embedded-library zlib [*]
+firmware-qcom-dsp: arch-independent-package-contains-binary-or-object [*]
+
+# We can't change licence / notice texts
+firmware-qcom-dsp: spelling-error-in-copyright "GNU Public Licence" "GNU General Public License"
+firmware-qcom-dsp: spelling-error-in-copyright aheared adhered
+firmware-qcom-dsp: spelling-error-in-copyright rouines routines

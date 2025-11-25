@@ -3,7 +3,7 @@ Architecture: all
 Depends:
  ${misc:Depends}, #PACKAGES#
 Description: Hexagon DSP binaries and libraries
- While linux-firmware contains firmware for the DSPs present on the devices
+ While firmware-qcom-dsp contains firmware for the DSPs present on the devices
  using Qualcomm SoCs, using the FastRPC interfaces, compressed audio support
  or getting the sensors data on those devices requires additional set of
  binaries to be executed on the DSP side.
@@ -14,3 +14,13 @@ Description: Hexagon DSP binaries and libraries
  .
  This is an empty package which depends on all actual Hexagon DSP binary
  packages.
+
+Package: firmware-qcom-dsp
+Architecture: all
+Depends:
+ ${misc:Depends}
+Replaces: firmware-qcom-soc (<= 20251112)
+Breaks: firmware-qcom-soc (<= 20251112)
+Description: Binary firmware for DSP on Qualcomm SoCs
+ This package contains the binary firmware for Hexagon DSP found on various
+ Qualcomm Snapdragon platforms.
