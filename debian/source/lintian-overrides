@@ -2,3 +2,6 @@
 hexagon-dsp-binaries source: source-contains-prebuilt-binary *
 hexagon-dsp-binaries source: source-is-missing *
 hexagon-dsp-binaries: elf-warning *
+
+# We don't have a way to describe license texts themselves (bug #1111126)
+hexagon-dsp-binaries source: file-without-copyright-information LICENSE.* [debian/copyright]

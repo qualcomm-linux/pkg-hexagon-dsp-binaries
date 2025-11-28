@@ -9,13 +9,19 @@ Upstream-Name: hexagon-dsp-binaries
 Upstream-Contact: Dmitry Baryshkov <dbaryshk@qti.qualcomm.com>
 
 Files:
- *
+ apq8096/*
+ qcm2290/*
+ qcm6490/*
+ qrb4210/*
+ sdm845/*
+ sm8250/*
 Copyright:
  2013-2025 Qualcomm Technologies, Inc.
 License: binary-redist-Qualcomm-media
 
 Files:
  sa8775p/*
+ qcs615/*
  qcs8300/*
 Copyright:
  2013-2025 Qualcomm Technologies, Inc.
