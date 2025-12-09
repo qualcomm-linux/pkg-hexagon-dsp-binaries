@@ -1,0 +1,21 @@
+---
+include:
+  - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml
+
+variables:
+  # Prepare debian/control
+  SALSA_CI_GBP_BUILDPACKAGE_ARGS: '--git-hooks'
+  # We don't compile anything
+  SALSA_CI_DISABLE_CCACHE: 'true'
+  SALSA_CI_DISABLE_CROSSBUILD_ARM64: 'true'
+  SALSA_CI_DISABLE_BUILD_PACKAGE_I386: 'true'
+
+.build-definition:
+   before_script:
+     - apt-get update && eatmydata apt-get install -y libjson-perl rsync
+
+# This job has extra build_script, so override it too
+build source:
+   before_script:
+     - apt-get update && eatmydata apt-get install -y libjson-perl rsync
+     - !reference [.pipeline-stats-reporting]
