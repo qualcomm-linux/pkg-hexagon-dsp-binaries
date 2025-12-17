@@ -3,6 +3,8 @@ include:
   - https://salsa.debian.org/salsa-ci-team/pipeline/raw/master/recipes/debian.yml
 
 variables:
+  # Be more strict
+  SALSA_CI_LINTIAN_FAIL_WARNING: 1
   # Prepare debian/control
   SALSA_CI_GBP_BUILDPACKAGE_ARGS: '--git-hooks'
   # We don't compile anything
