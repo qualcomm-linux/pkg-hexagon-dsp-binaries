@@ -63,7 +63,6 @@ License: GPL-2
 
 Files:
  firmware/qcom/apq8096/*
- firmware/qcom/kaanapali/*
  firmware/qcom/qcm2290/*
  firmware/qcom/qcm6490/*
  firmware/qcom/qcs615/*
@@ -88,8 +87,10 @@ Copyright: 1986, Gary S. Brown
 License: binary-redist-Qualcomm-media
 
 Files:
- firmware/qcom/sa8775p/*
+ firmware/qcom/kaanapali/*
  firmware/qcom/qcs8300/*
+ firmware/qcom/sa8775p/*
+ firmware/qcom/sm8750/*
 Copyright: 1986, Gary S. Brown
            1995-1998, Eric Young
            1995-2005, Jean-loup Gailly
