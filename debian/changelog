@@ -1,3 +1,9 @@
+hexagon-dsp-binaries (0~20260309-1) UNRELEASED; urgency=medium
+
+  * New upstream release, skipping 20260110 and 20260221.
+
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Thu, 09 Apr 2026 12:58:36 +0300
+
 hexagon-dsp-binaries (0~20251125-1) unstable; urgency=medium
 
   * New upstream release, skipping 20251111.
