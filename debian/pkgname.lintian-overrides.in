@@ -1,7 +1,6 @@
 # Hexagon DSP binaries are quite different from our expectations
 #PKGNAME#: arch-dependent-file-in-usr-share [usr/share/hexagon-dsp/*]
 #PKGNAME#: arch-independent-package-contains-binary-or-object [usr/share/hexagon-dsp/*]
-#PKGNAME#: library-not-linked-against-libc [usr/share/hexagon-dsp/*]
 #PKGNAME#: shared-library-lacks-prerequisites [usr/share/hexagon-dsp/*]
 #PKGNAME#: shared-library-lacks-stack-section [usr/share/hexagon-dsp/*]
 #PKGNAME#: unstripped-binary-or-object [usr/share/hexagon-dsp/*]
