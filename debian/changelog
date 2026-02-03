@@ -1,8 +1,15 @@
-hexagon-dsp-binaries (0~20251021-1) UNRELEASED; urgency=medium
+hexagon-dsp-binaries (0~20251021-1) experimental; urgency=medium
 
   * New upstream release.
+  * d/copyright: add Hamoa IoT EVK platform
+  * d/pkgname.lintian-overrides.in: drop library-not-linked-against-libc tag
+  * d/control.head.in: bump Standards-Version to 4.7.3, no changes needed
+  * d/control.head.in: drop Priority:optional, it's default
+  * Still upload to experimental, per agreement with firmware-nonfree
+    maintainers. It will be uploaded to unstable once the version with DSP
+    firmware passes NEW queue.
 
- -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Wed, 26 Nov 2025 00:15:36 +0200
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Tue, 03 Feb 2026 20:12:00 +0200
 
 hexagon-dsp-binaries (0~20251011-1) experimental; urgency=medium
 
