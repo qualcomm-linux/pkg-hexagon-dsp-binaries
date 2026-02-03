@@ -42,9 +42,11 @@ Copyright:
 License: binary-redist-Qualcomm-hexagon
 
 Files:
+ kaanapali/*
  qcs615/*
  qcs8300/*
  sa8775p/*
+ sm8750/*
  x1e80100/*
 Copyright:
  2013-2025 Qualcomm Technologies, Inc.
