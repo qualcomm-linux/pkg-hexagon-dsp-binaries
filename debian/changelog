@@ -1,15 +1,20 @@
-hexagon-dsp-binaries (0~20251021-1) experimental; urgency=medium
+hexagon-dsp-binaries (0~20251021-1) unstable; urgency=medium
 
+  [ Dmitry Baryshkov ]
   * New upstream release.
   * d/copyright: add Hamoa IoT EVK platform
   * d/pkgname.lintian-overrides.in: drop library-not-linked-against-libc tag
   * d/control.head.in: bump Standards-Version to 4.7.3, no changes needed
   * d/control.head.in: drop Priority:optional, it's default
-  * Still upload to experimental, per agreement with firmware-nonfree
-    maintainers. It will be uploaded to unstable once the version with DSP
-    firmware passes NEW queue.
 
- -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Tue, 03 Feb 2026 20:12:00 +0200
+  [ Robie Basak ]
+  * Adjust versioned Breaks/Replaces from firmware-qcom-dsp to
+    firmware-qcom-soc now that we know the exact version the files were dropped
+    from the src:firmware-nonfree side.
+  * Upload to unstable since there's no longer any benefit to holding this
+    package out of unstable.
+
+ -- Robie Basak <robie.basak@oss.qualcomm.com>  Fri, 06 Feb 2026 11:37:06 +0000
 
 hexagon-dsp-binaries (0~20251011-1) experimental; urgency=medium
 
