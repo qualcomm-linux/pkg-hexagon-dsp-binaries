@@ -19,8 +19,8 @@ Package: firmware-qcom-dsp
 Architecture: all
 Depends:
  ${misc:Depends}
-Replaces: firmware-qcom-soc (<= 20251112)
-Breaks: firmware-qcom-soc (<= 20251112)
+Replaces: firmware-qcom-soc (<= 20251125-1~)
+Breaks: firmware-qcom-soc (<= 20251125-1~)
 Description: Binary firmware for DSP on Qualcomm SoCs
  This package contains the binary firmware for Hexagon DSP found on various
  Qualcomm Snapdragon platforms.
