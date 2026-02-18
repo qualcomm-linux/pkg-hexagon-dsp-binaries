@@ -1,8 +1,9 @@
-hexagon-dsp-binaries (0~20251125-1) UNRELEASED; urgency=medium
+hexagon-dsp-binaries (0~20251125-1) unstable; urgency=medium
 
   * New upstream release, skipping 20251111.
+  * d/copyright: update licence for kaanapali, add sm8750 firmware
 
- -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Tue, 03 Feb 2026 20:56:17 +0200
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Wed, 18 Feb 2026 12:19:36 +0200
 
 hexagon-dsp-binaries (0~20251021-1) unstable; urgency=medium
 
