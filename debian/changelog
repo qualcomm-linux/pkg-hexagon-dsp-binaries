@@ -1,3 +1,9 @@
+hexagon-dsp-binaries (0~20260110-0qcom1~) UNRELEASED; urgency=medium
+
+  * New upstream release.
+
+ -- Robie Basak <robie.basak@oss.qualcomm.com>  Wed, 25 Feb 2026 15:49:25 +0000
+
 hexagon-dsp-binaries (0~20251125-1) unstable; urgency=medium
 
   * New upstream release, skipping 20251111.
