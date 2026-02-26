@@ -1,8 +1,10 @@
-hexagon-dsp-binaries (0~20260110-0qcom1~bpo1~) UNRELEASED; urgency=medium
+hexagon-dsp-binaries (0~20260110-0qcom1~bpo1) trixie; urgency=medium
 
   * Backport to trixie.
+  * Replace versioned firmware-qcom-dsp Breaks/Replaces on firmware-qcom-soc
+    with an unversioned Replaces only.
 
- -- Robie Basak <robie.basak@oss.qualcomm.com>  Thu, 26 Feb 2026 16:29:19 +0000
+ -- Robie Basak <robie.basak@oss.qualcomm.com>  Thu, 26 Feb 2026 17:06:45 +0000
 
 hexagon-dsp-binaries (0~20260110-0qcom1) unstable; urgency=medium
 
