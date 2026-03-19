@@ -1,3 +1,9 @@
+hexagon-dsp-binaries (0~20251125-1~bpo13+1) trixie-backports; urgency=medium
+
+  * Rebuild for trixie-backports.
+
+ -- Robie Basak <robie.basak@oss.qualcomm.com>  Thu, 19 Mar 2026 15:19:04 +0000
+
 hexagon-dsp-binaries (0~20251125-1) unstable; urgency=medium
 
   * New upstream release, skipping 20251111.
