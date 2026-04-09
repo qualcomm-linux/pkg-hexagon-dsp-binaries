@@ -118,6 +118,12 @@ Copyright:
 License: MIT
 
 Files:
+ conf.d/*
+Copyright:
+ 2026 Qualcomm Technologies, Inc. and/or its subsidiaries.
+License: MIT
+
+Files:
  debian/*
 Copyright:
  2025 Qualcomm Technologies, Inc. and/or its subsidiaries.
