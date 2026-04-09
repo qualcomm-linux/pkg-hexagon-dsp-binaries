@@ -34,6 +34,7 @@ Files:
  apq8096/*
  qcm2290/*
  qcm6490/*
+ qcs6490/*
  qrb4210/*
  sdm845/*
  sm8250/*
@@ -42,6 +43,7 @@ Copyright:
 License: binary-redist-Qualcomm-hexagon
 
 Files:
+ glymur/*
  kaanapali/*
  qcs615/*
  qcs8300/*
@@ -89,6 +91,7 @@ Copyright: 1986, Gary S. Brown
 License: binary-redist-Qualcomm-media
 
 Files:
+ firmware/qcom/glymur/*
  firmware/qcom/kaanapali/*
  firmware/qcom/qcs8300/*
  firmware/qcom/sa8775p/*
