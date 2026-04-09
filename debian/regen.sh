@@ -31,6 +31,8 @@ add_package() {
 		if [ ! -e "debian/${pkgname}.install" ]
 		then
 			echo "# Automatically generated file, modify debian/regen.sh instead" > debian/${pkgname}.install
+
+			echo "usr/share/hexagon-dsp/conf.d/${pkgname}.yaml" >>  debian/${pkgname}.install
 		fi
 
 		echo "WHENCE" > debian/${pkgname}.docs
