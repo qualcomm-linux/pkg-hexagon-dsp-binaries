@@ -34,6 +34,7 @@ Files:
  apq8096/*
  qcm2290/*
  qcm6490/*
+ qcs6490/*
  qrb4210/*
  sdm845/*
  sm8250/*
@@ -42,9 +43,12 @@ Copyright:
 License: binary-redist-Qualcomm-hexagon
 
 Files:
+ glymur/*
+ kaanapali/*
  qcs615/*
  qcs8300/*
  sa8775p/*
+ sm8750/*
  x1e80100/*
 Copyright:
  2013-2025 Qualcomm Technologies, Inc.
@@ -87,6 +91,7 @@ Copyright: 1986, Gary S. Brown
 License: binary-redist-Qualcomm-media
 
 Files:
+ firmware/qcom/glymur/*
  firmware/qcom/kaanapali/*
  firmware/qcom/qcs8300/*
  firmware/qcom/sa8775p/*
@@ -113,6 +118,12 @@ Files:
 Copyright:
  2024-2025 Linaro Ltd.
  Qualcomm Technologies, Inc. and/or its subsidiaries.
+License: MIT
+
+Files:
+ conf.d/*
+Copyright:
+ 2026 Qualcomm Technologies, Inc. and/or its subsidiaries.
 License: MIT
 
 Files:

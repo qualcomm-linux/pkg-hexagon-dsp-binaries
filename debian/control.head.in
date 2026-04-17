@@ -2,8 +2,9 @@ Source: hexagon-dsp-binaries
 Section: non-free-firmware/libs
 Maintainer: Dmitry Baryshkov <dbaryshkov@gmail.com>
 Build-Depends:
- debhelper-compat (= 13), dpkg-build-api (=1), python3-debian, python3-minimal, rdfind, yq
+ debhelper-compat (= 13), dpkg-build-api (=1), python3-debian, python3-minimal, rdfind
 Standards-Version: 4.7.3
 Homepage: https://github.com/linux-msm/hexagon-dsp-binaries/
 Vcs-Browser: https://salsa.debian.org/lumag/hexagon-dsp-binaries
 Vcs-Git: https://salsa.debian.org/lumag/hexagon-dsp-binaries.git
+XS-Autobuild: yes

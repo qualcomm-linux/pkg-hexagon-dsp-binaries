@@ -4,5 +4,3 @@ usr/share/hexagon-dsp/*/*/*/dsp/*/map_*.txt
 usr/share/hexagon-dsp/*/*/*/dsp/*/LICENSE*
 # to be removed in the next version
 usr/share/hexagon-dsp/qcs8300/Qualcomm/QCS8300-RIDE/dsp/gdsp0/gpdspr.jsn
-# Split into per-package configs in debian/rules
-usr/share/hexagon-dsp/conf.d/00-hexagon-dsp-binaries.yaml

@@ -1,3 +1,30 @@
+hexagon-dsp-binaries (0~20260309-1~bpo13+1~qcom1) trixie-backports; urgency=medium
+
+  * Cherry-pick ahead of upload for QLI.
+
+ -- Loïc Minier <loic.minier@oss.qualcomm.org>  Fri, 17 Apr 2026 20:48:27 +0200
+
+hexagon-dsp-binaries (0~20260309-1~bpo13+1) trixie-backports; urgency=medium
+
+  * Rebuild for trixie-backports.
+
+ -- Loïc Minier <loic.minier@oss.qualcomm.org>  Fri, 17 Apr 2026 20:48:27 +0200
+
+hexagon-dsp-binaries (0~20260309-1) unstable; urgency=medium
+
+  * New upstream release, skipping 20260110 and 20260221.
+  * d/control.head.in: set XS-Autobuild: yes (Closes: #1129001)
+  * d/gbp.conf: fix debian-branch key
+  * d/copyright: add licence for kaanapali and SM8750 binaries
+  * d/control.dev.in: provide virtual package (Closes: #1126262)
+  * d/copyright: document config files
+  * d/regen.sh: install config files
+  * d/regen.sh: rework how the symlinks are handled
+  * d/copyright: document licence for Glymur and QCS6490 firmware and bins
+  * d/patches/70.patch: fix name for Arduino VENTUNO Q board
+
+ -- Dmitry Baryshkov <dbaryshkov@gmail.com>  Wed, 15 Apr 2026 17:17:14 +0300
+
 hexagon-dsp-binaries (0~20260110-0qcom1~bpo1) trixie; urgency=medium
 
   * Backport to trixie.
@@ -11,6 +38,12 @@ hexagon-dsp-binaries (0~20260110-0qcom1) unstable; urgency=medium
   * New upstream release.
 
  -- Robie Basak <robie.basak@oss.qualcomm.com>  Thu, 26 Feb 2026 16:28:27 +0000
+
+hexagon-dsp-binaries (0~20251125-1~bpo13+1) trixie-backports; urgency=medium
+
+  * Rebuild for trixie-backports.
+
+ -- Robie Basak <robie.basak@oss.qualcomm.com>  Thu, 19 Mar 2026 15:19:04 +0000
 
 hexagon-dsp-binaries (0~20251125-1) unstable; urgency=medium
 

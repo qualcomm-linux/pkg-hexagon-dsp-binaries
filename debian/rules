@@ -30,24 +30,6 @@ override_dh_auto_install:
 
 override_dh_install:
 	dh_install
-	# Split 00-hexagon-dsp-binaries.yaml from upstream into per-package
-	# configs. This reimplements/duplicates the mapping from
-	# DSP_LIBRARY_PATH to binary package name that is already in regen.sh,
-	# but that seems preferable to somehow calling out to shell functions
-	# from within yq/jq. There is also no validation against config.txt,
-	# but that seems reasonable as if the YAML was invalid before, we
-	# won't have made it worse. One edge case is that if the upstream YAML
-	# config mentions DSP_LIBRARY_PATHs that are not in config.txt, then
-	# we will generate some empty conf.d directories that will not get
-	# cleaned up by a later `debian/rules clean`, but that doesn't seem
-	# like it's worth the extra validation/cleanup code to worry about.
-	for pkgname in $$(yq -r '.machines[].DSP_LIBRARY_PATH | split("/") | .[1:3] | join("-") | ascii_downcase | gsub("_"; "-") | "hexagon-dsp-binaries-" + .' 00-hexagon-dsp-binaries.yaml | sort -u); do \
-		mkdir -p "debian/$${pkgname}/usr/share/hexagon-dsp/conf.d"; \
-		grep -iE '^[[:space:]]*#[[:space:]]*(spdx-license-identifier|copyright)' 00-hexagon-dsp-binaries.yaml > "debian/$${pkgname}/usr/share/hexagon-dsp/conf.d/$${pkgname}.yaml"; \
-		pkgname=$${pkgname} yq -y '.machines |= with_entries(select(.value.DSP_LIBRARY_PATH | split("/") | .[1:3] | join("-") | ascii_downcase | gsub("_"; "-") | "hexagon-dsp-binaries-" + . == $$ENV.pkgname))' \
-			00-hexagon-dsp-binaries.yaml \
-			>> "debian/$${pkgname}/usr/share/hexagon-dsp/conf.d/$${pkgname}.yaml"; \
-	done
 	debian/check-symlinks
 
 override_dh_clean:

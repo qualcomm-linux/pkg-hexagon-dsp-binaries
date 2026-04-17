@@ -2,7 +2,8 @@ Package: #PKGNAME#
 Architecture: all
 Depends:
  ${misc:Depends}, ##PKGNAME#-DEPS#firmware-qcom-dsp (= ${binary:Version})
-Provides: hexagon-dsp-binaries-any
+Provides:
+ hexagon-dsp-binaries-impl
 Description: Hexagon DSP binaries and libraries for #DEVNAME#
  While firmware-qcom-dsp contains firmware for the DSPs present on the devices
  using Qualcomm SoCs, using the FastRPC interfaces, compressed audio support

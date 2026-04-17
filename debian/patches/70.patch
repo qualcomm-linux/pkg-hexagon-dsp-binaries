@@ -1,0 +1,29 @@
+From a29fc28bdb0083771a4cb5d615c3b3d3f5b4668b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Lo=C3=AFc=20Minier?= <loic.minier@oss.qualcomm.com>
+Date: Tue, 14 Apr 2026 19:47:13 +0200
+Subject: [PATCH] qcs8300: rename Arduino Monza to VENTUNO Q
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The initial Device Tree used the Monza codename for this platform, but
+the one merged in the upstream kernel is Arduino VENTUNO Q. Update the
+name in the config to match.
+
+Signed-off-by: Loïc Minier <loic.minier@oss.qualcomm.com>
+Origin: upstream, https://github.com/linux-msm/hexagon-dsp-binaries/commit/a29fc28bdb0083771a4cb5d615c3b3d3f5b4668b.patch
+---
+ conf.d/hexagon-dsp-binaries-arduino-monza.yaml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/conf.d/hexagon-dsp-binaries-arduino-monza.yaml b/conf.d/hexagon-dsp-binaries-arduino-monza.yaml
+index c738942..5ffe44f 100644
+--- a/conf.d/hexagon-dsp-binaries-arduino-monza.yaml
++++ b/conf.d/hexagon-dsp-binaries-arduino-monza.yaml
+@@ -1,5 +1,5 @@
+ # SPDX-License-Identifier: MIT
+ # Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ machines:
+-  Arduino Monza:
++  Arduino VENTUNO Q:
+     DSP_LIBRARY_PATH: qcs8300/Arduino/Monza/dsp
