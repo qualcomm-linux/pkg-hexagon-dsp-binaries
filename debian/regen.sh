@@ -31,6 +31,8 @@ add_package() {
 		if [ ! -e "debian/${pkgname}.install" ]
 		then
 			echo "# Automatically generated file, modify debian/regen.sh instead" > debian/${pkgname}.install
+
+			echo "usr/share/hexagon-dsp/conf.d/${pkgname}.yaml" >>  debian/${pkgname}.install
 		fi
 
 		echo "WHENCE" > debian/${pkgname}.docs
@@ -46,12 +48,22 @@ skip_soc() {
 }
 
 device_name() {
-	# keep first two pathname entries
-	sed -e 's!\([^/]*/[^/]*\)/.*!\1!g'
+	# keep first three pathname entries
+	sed -e 's!\([^/]*/[^/]*/[^/]*\)/.*!\1!g'
 }
 
 to_pkgname() {
 	tr A-Z/_ a-z-- | sed -e 's!^!hexagon-dsp-binaries-!'
+}
+
+do_install_dsp() {
+	pkgname="$1"
+	target="$2"
+
+	if ! grep -q "${target}/dsp" debian/${pkgname}.install
+	then
+		echo "usr/share/hexagon-dsp/${target}/dsp/" >> debian/${pkgname}.install
+	fi
 }
 
 do_install() {
@@ -63,20 +75,19 @@ do_install() {
 		sed -e "s!#PKGNAME#!${pkgname}!g" debian/pkgname.lintian-overrides.in >> debian/${pkgname}.lintian-overrides
 	fi
 
-	echo "usr/share/hexagon-dsp/${target}/dsp/*/*.so*" >> debian/${pkgname}.install
-	echo "usr/share/hexagon-dsp/${target}/dsp/*/fastrpc_shell*" >> debian/${pkgname}.install
+	do_install_dsp "$pkgname" "$target"
 }
 
 do_link() {
 	src="$1"
 	target="$2"
-	spkgname=$(echo $src | skip_soc | device_name | to_pkgname)
-	pkgname=$(echo $target | skip_soc | device_name | to_pkgname)
+	spkgname=$(echo $src | device_name | skip_soc | to_pkgname)
+	pkgname=$(echo $target | device_name | skip_soc | to_pkgname)
 
 	add_package ${pkgname}
 	echo "$spkgname" >> debian/${pkgname}.tmp-deps
 
-	echo "usr/share/hexagon-dsp/${target}" >> debian/${pkgname}.install
+	do_install_dsp "$pkgname" "$(echo $target | device_name)"
 }
 
 rm -f debian/hexagon-dsp-binaries.lintian-overrides
