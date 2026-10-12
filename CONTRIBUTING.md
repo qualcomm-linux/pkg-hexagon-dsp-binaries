@@ -26,7 +26,7 @@ Development happens directly on branch main. Open a PR targeting main
 1. Create an upstream `remote` to make it easier to keep your branches up-to-date:
 
     ```bash
-    git remote add upstream https://github.com/qualcomm/<REPLACE-ME>.git
+    git remote add upstream https://github.com/qualcomm-linux/pkg-hexagon-dsp-binaries.git
     ```
 
 1. Make your changes, add tests, and make sure the tests still pass.
